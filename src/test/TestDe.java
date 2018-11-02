@@ -11,6 +11,7 @@ public class TestDe {
 	private De de1;
 	private De de2;
 	
+	
 	private void setValeur(De de, int valeur){
 		while(de.getValeur() != valeur)
 		{
@@ -30,18 +31,21 @@ public class TestDe {
 		assertEquals(valeurInitDe,de1.getValeur());
 	}
 	
+	@Test
 	public void valeurSuperieureTest(){
 		setValeur(de1, 6);
 		setValeur(de2, 1);
 		assertEquals(1, de1.compareTo(de2));
 	}
 	
+	@Test
 	public void valeurInferieureTest(){
 		setValeur(de1, 1);
 		setValeur(de2, 6);
 		assertEquals(-1, de1.compareTo(de2));
 	}
 	
+	@Test
 	public void memeValeurTest(){
 		setValeur(de1, 1);
 		setValeur(de2, 1);
