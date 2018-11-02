@@ -1,22 +1,22 @@
 package generic;
 
-public class Jeu implements IStrategie{
+public abstract class Jeu {
 	
 	int nbTours;
 	
-	public Jeu(CollectionDes collDes, CollectionJoueurs collJoueurs){
+	public Jeu(CollectionDes collDes, CollectionJoueurs collJoueurs, IStrategie strat){
+		
+	}
+	
+	public void effectuerTour(){
 		
 	}
 
-	@Override
-	public void calculerLeVainqueur(Jeu jeu) {
-		// TODO Auto-generated method stub
+	public void calculerLeVainqueur() {
 		
 	}
 
-	@Override
-	public void calculerScoreTour(Jeu jeu) {
-		// TODO Auto-generated method stub
+	public void calculerScoreTour() {
 		
 	}
 }

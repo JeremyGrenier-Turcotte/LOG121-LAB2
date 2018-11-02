@@ -3,6 +3,7 @@ package generic;
 public class De implements Comparable<De> {
 	
 	int nbFaces;
+	int valeur;
 	
 	public De(int nbFaces){
 		this.nbFaces = nbFaces;
