@@ -1,20 +1,19 @@
 package generic;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class CollectionJoueurs implements Iterable<Joueur>{
-	
+
+	private List<Joueur> joueurs = new ArrayList<>();
+
 	public void ajouterJoueur(Joueur joueur){
-		
-	}
-	
-	public void creerIterateur(){
-		
+		joueurs.add(joueur);
 	}
 
 	@Override
 	public Iterator<Joueur> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+        return new IterateurJoueurs(joueurs);
 	}
 }
