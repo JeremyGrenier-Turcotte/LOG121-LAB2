@@ -1,6 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.util.Iterator;
+
 import generic.CollectionJoueurs;
 import generic.IterateurJoueurs;
 import generic.Joueur;
@@ -15,8 +18,8 @@ public class TestCollectionJoueurs {
 	private Joueur joueur3;
 	private CollectionJoueurs collJoueurs1;
 	private CollectionJoueurs collJoueurs2;
-	private IterateurJoueurs itrJoueur1;
-	private IterateurJoueurs itrJoueur2;
+	private Iterator<Joueur> itrJoueur1;
+	private Iterator<Joueur> itrJoueur2;
 	
 	@Before
 	public void faireAvant(){
@@ -29,7 +32,7 @@ public class TestCollectionJoueurs {
 		collJoueurs1.ajouterJoueur(joueur2);
 		collJoueurs1.ajouterJoueur(joueur3);
 		
-		itrJoueur1 = new IterateurJoueurs(collJoueurs1);
+		itrJoueur1 = collJoueurs1.iterator();
 	}
 	
 	@Test

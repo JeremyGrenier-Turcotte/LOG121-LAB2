@@ -1,6 +1,9 @@
 package test;
 
 import static org.junit.Assert.*;
+
+import java.util.Iterator;
+
 import generic.CollectionDes;
 import generic.De;
 import generic.IterateurDes;
@@ -15,8 +18,8 @@ public class TestCollectionDes {
 	private De de3;
 	private CollectionDes collDes1;
 	private CollectionDes collDes2;
-	private IterateurDes itrDes1;
-	private IterateurDes itrDes2;
+	private Iterator<De> itrDes1;
+	private Iterator<De> itrDes2;
 	
 	@Before
 	public void faireAvant(){
@@ -29,7 +32,7 @@ public class TestCollectionDes {
 		collDes1.ajouterDe(de2);
 		collDes1.ajouterDe(de3);
 		
-		itrDes1 = new IterateurDes(collDes1);
+		itrDes1 = collDes1.iterator();
 	}
 
 	@Test
