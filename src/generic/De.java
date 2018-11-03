@@ -46,6 +46,23 @@ public class De implements Comparable<De> {
         else
             return 0;
 	}
+	
+	/**
+	 * Redéfinition du test d'égalité entre deux dés
+	 * @return true si les deux dés ont le même nombre de face et la même valeur, false sinon.
+	 */
+	@Override
+	public boolean equals(Object objet){
+		if(objet == null) return false;
+		if(!(objet instanceof De)) return false;
+		De de = (De)objet;
+		if(this.getNbFaces() == de.getNbFaces() && this.getValeur() == de.getValeur()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 
     /**
      * Brasse le dé de façon aléatoire et met à jour la valeur du dé en fonction du résultat du brassage.

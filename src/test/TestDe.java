@@ -6,18 +6,10 @@ import generic.De;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestDe {
+public class TestDe extends TestBase{
 
 	private De de1;
 	private De de2;
-	
-	
-	private void setValeur(De de, int valeur){
-		while(de.getValeur() != valeur)
-		{
-		       de.brasser();
-		}
-	}
 	
 	@Before
 	public void faireAvant(){
@@ -33,22 +25,22 @@ public class TestDe {
 	
 	@Test
 	public void valeurSuperieureTest(){
-		setValeur(de1, 6);
-		setValeur(de2, 1);
+		setValeurDe(de1, 6);
+		setValeurDe(de2, 1);
 		assertEquals(1, de1.compareTo(de2));
 	}
 	
 	@Test
 	public void valeurInferieureTest(){
-		setValeur(de1, 1);
-		setValeur(de2, 6);
+		setValeurDe(de1, 1);
+		setValeurDe(de2, 6);
 		assertEquals(-1, de1.compareTo(de2));
 	}
 	
 	@Test
 	public void memeValeurTest(){
-		setValeur(de1, 1);
-		setValeur(de2, 1);
+		setValeurDe(de1, 1);
+		setValeurDe(de2, 1);
 		assertEquals(0, de1.compareTo(de2));
 	}
 
