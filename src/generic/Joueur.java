@@ -47,4 +47,20 @@ public class Joueur implements Comparable<Joueur> {
 		    return 0;
 	}
 
+	/**
+	 * Redéfinition du test d'égalité entre deux joueurs
+	 * @return true si les id et les scores sont égaux, false sinon
+	 */
+	@Override
+	public boolean equals(Object objet){
+		if(objet == null) return false;
+		if(!(objet instanceof Joueur)) return false;
+		Joueur joueur = (Joueur)objet;
+		if(this.getId() == joueur.getId() && this.getScore() == joueur.getScore()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }
