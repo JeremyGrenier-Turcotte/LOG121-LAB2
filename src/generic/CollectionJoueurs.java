@@ -12,6 +12,8 @@ public class CollectionJoueurs implements Iterable<Joueur>{
 		joueurs.add(joueur);
 	}
 
+	public int getNbJoueurs() { return joueurs.size(); }
+
 	@Override
 	public Iterator<Joueur> iterator() {
         return new IterateurJoueurs(joueurs);
