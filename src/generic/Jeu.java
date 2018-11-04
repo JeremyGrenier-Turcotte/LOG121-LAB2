@@ -26,6 +26,22 @@ public abstract class Jeu {
 	    	this.strat = strat;
 	}
 
+	public Joueur getJoueurCourant() {
+	    return joueurCourant;
+    }
+
+    public int getNbTours() {
+        return nbTours;
+    }
+
+    public CollectionDes getCollDes() {
+        return collDes;
+    }
+
+    public CollectionJoueurs getCollJoueurs() {
+        return collJoueurs;
+    }
+
     /**
      * Simule une partie.
      */
