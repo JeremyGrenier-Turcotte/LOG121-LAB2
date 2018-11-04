@@ -8,8 +8,6 @@ import java.util.Iterator;
 
 public class BuncoPlusStrategie implements IStrategie {
 
-	int tourCourant = 1;
-
 	@Override
 	public void calculerLeVainqueur(Jeu jeu) {
 		// TODO Auto-generated method stub
@@ -24,7 +22,8 @@ public class BuncoPlusStrategie implements IStrategie {
 	@Override
 	public int calculerScoreTour(Jeu jeu) {
 
-	    // Premierement on brasse les dés
+	    // Premierement on récupere le tour courant et on brasse les dés
+	    int tourCourant = ((BuncoPlus)jeu).getTourCourant();
 		jeu.getCollDes().brasserDes();
 
 		// On itère dans la collection de dés pour savoir combien de dés correspondent au tour courant.
