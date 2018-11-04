@@ -3,28 +3,14 @@ package bunco;
 import generic.CollectionDes;
 import generic.CollectionJoueurs;
 import generic.GenerateurJeuTemplate;
-import generic.IStrategie;
 import generic.Jeu;
 
-public class GenerateurBuncoPlus implements GenerateurJeuTemplate{
+public class GenerateurBuncoPlus extends GenerateurJeuTemplate{
 
 	@Override
-	public Jeu creerJeu(CollectionDes collDes, CollectionJoueurs collJoueurs,
-			IStrategie stratJeu) {
-		// TODO Auto-generated method stub
-		return null;
+	public Jeu creerJeu(int nbJoueurs) {
+		CollectionDes cd = creerDes(3, 6);
+		CollectionJoueurs cj = creerJoueurs(nbJoueurs);
+		return new BuncoPlus(cd, cj, new BuncoPlusStrategie());
 	}
-
-	@Override
-	public CollectionJoueurs creerJoueurs() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public CollectionDes creerDes() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
