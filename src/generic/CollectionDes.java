@@ -1,22 +1,29 @@
 package generic;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Classe représentant une collection de dés.
  */
 public class CollectionDes implements Iterable<De>{
 	
-	private List<De> des = new ArrayList<>();
+	private De[] tabDes = new De[10];
+	private int index = 0;
+
+    /**
+     * Obtient le nombre de dés que contient la collection.
+     * @return nombre de dés contenus
+     */
+	public int getNbDes() {
+	    return index;
+    }
 
     /**
      * Ajoute un dé à la collection
      * @param de dé à ajouter
      */
 	public void ajouterDe(De de){
-		des.add(de);
+		tabDes[index++] = de;
 	}
 
     /**
@@ -24,7 +31,7 @@ public class CollectionDes implements Iterable<De>{
      */
 	public void brasserDes(){
         for (De de :
-                des) {
+                tabDes) {
             de.brasser();
         }
 	}
@@ -35,7 +42,7 @@ public class CollectionDes implements Iterable<De>{
      */
 	@Override
 	public Iterator<De> iterator() {
-		return new IterateurDes(des);
+		return new IterateurDes(tabDes);
 	}
 	
 	/**
@@ -45,15 +52,23 @@ public class CollectionDes implements Iterable<De>{
 	 */
 	@Override
 	public boolean equals(Object objet){
+
 		if(objet == null) return false;
 		if(!(objet instanceof CollectionDes)) return false;
+
 		CollectionDes collDes = (CollectionDes)objet;
-		if(des.size() != collDes.des.size()) return false;
-		for(int i = 0; i < des.size(); i++){
-			if(!(des.get(i).equals(collDes.des.get(i)))){
-				return false;
-			}
-		}
+		if(getNbDes() != collDes.getNbDes()) return false;
+
+		int i =0;
+		Iterator<De> itrDes = collDes.iterator();
+		while (itrDes.hasNext()) {
+		    De de = itrDes.next();
+		    if(!de.equals(tabDes[i])) {
+		        return false;
+            }
+            i++;
+        }
+
 		return true;
 	}
 }

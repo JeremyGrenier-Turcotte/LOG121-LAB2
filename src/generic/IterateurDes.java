@@ -1,7 +1,6 @@
 package generic;
 
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Classe qui permet d'itérer dans une collection de dés.
@@ -9,14 +8,14 @@ import java.util.List;
 public class IterateurDes implements Iterator<De> {
 
     private int index = 0;
-    private List<De> des;
+    private De[] tabDes;
 
     /**
      * Instancie un itérateur selon une liste de dés donnée.
-     * @param des liste de dés ou on veut itérer
+     * @param tabDes liste de dés ou on veut itérer
      */
-	public IterateurDes(List<De> des) {
-	    this.des = des;
+	public IterateurDes(De[] tabDes) {
+	    this.tabDes = tabDes;
     }
 
     /**
@@ -25,7 +24,7 @@ public class IterateurDes implements Iterator<De> {
      */
 	@Override
 	public boolean hasNext() {
-		return index >= des.size() ? false : true;
+		return index >= tabDes.length || tabDes[index] == null ? false : true;
 	}
 
     /**
@@ -34,9 +33,7 @@ public class IterateurDes implements Iterator<De> {
      */
 	@Override
 	public De next() {
-	    De de = des.get(index);
-	    index++;
-		return de;
+	    return tabDes[index++];
 	}
 
 }

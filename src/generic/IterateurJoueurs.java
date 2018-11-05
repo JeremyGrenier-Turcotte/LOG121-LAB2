@@ -1,22 +1,21 @@
 package generic;
 
 import java.util.Iterator;
-import java.util.List;
 
 /**
- * Classe qui permet d'itérer dans une collection de joueurs.
+ * Classe qui permet d'itérer dans une collection de tabJoueurs.
  */
 public class IterateurJoueurs implements Iterator<Joueur> {
 
     private int index = 0;
-    private List<Joueur> joueurs;
+    private Joueur[] tabJoueurs;
 
     /**
      * Créé une instance d'IterateurJoueurs
-     * @param joueurs liste de joueurs
+     * @param joueurs liste de tabJoueurs
      */
-    public IterateurJoueurs(List<Joueur> joueurs) {
-        this.joueurs = joueurs;
+    public IterateurJoueurs(Joueur[] joueurs) {
+        this.tabJoueurs = joueurs;
     }
 
     /**
@@ -25,7 +24,7 @@ public class IterateurJoueurs implements Iterator<Joueur> {
      */
 	@Override
 	public boolean hasNext() {
-        return index >= joueurs.size() ? false : true;
+        return index >= tabJoueurs.length || tabJoueurs[index] == null ? false : true;
 	}
 
     /**
@@ -34,9 +33,7 @@ public class IterateurJoueurs implements Iterator<Joueur> {
      */
 	@Override
 	public Joueur next() {
-        Joueur j = joueurs.get(index);
-        index++;
-        return j;
+        return tabJoueurs[index++];
 	}
 
 }

@@ -5,10 +5,8 @@ import static org.junit.Assert.*;
 import java.util.Iterator;
 
 import generic.CollectionJoueurs;
-import generic.IterateurJoueurs;
 import generic.Joueur;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class TestCollectionJoueurs extends TestBase{

@@ -1,22 +1,23 @@
 package generic;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class CollectionJoueurs implements Iterable<Joueur>{
 
-	private List<Joueur> joueurs = new ArrayList<>();
+	private Joueur[] tabJoueurs = new Joueur[10];
+	private int index = 0;
 
 	public void ajouterJoueur(Joueur joueur){
-		joueurs.add(joueur);
+		tabJoueurs[index++] = joueur;
 	}
 
-	public int getNbJoueurs() { return joueurs.size(); }
+	public int getNbJoueurs() {
+	    return index;
+    }
 
 	@Override
 	public Iterator<Joueur> iterator() {
-        return new IterateurJoueurs(joueurs);
+        return new IterateurJoueurs(tabJoueurs);
 	}
 	
 	/**
@@ -26,15 +27,22 @@ public class CollectionJoueurs implements Iterable<Joueur>{
 	 */
 	@Override
 	public boolean equals(Object objet){
+
 		if(objet == null) return false;
 		if(!(objet instanceof CollectionJoueurs)) return false;
+
 		CollectionJoueurs collJoueurs = (CollectionJoueurs)objet;
-		if(joueurs.size() != collJoueurs.joueurs.size()) return false;
-		for(int i = 0; i < joueurs.size(); i++){
-			if(!(joueurs.get(i).equals(collJoueurs.joueurs.get(i)))){
-				return false;
-			}
-		}
-		return true;
+		if(getNbJoueurs() != collJoueurs.getNbJoueurs()) return false;
+
+		int i = 0;
+		Iterator<Joueur> itrJoueurs = collJoueurs.iterator();
+		while (itrJoueurs.hasNext()) {
+		    Joueur j = itrJoueurs.next();
+		    if(!j.equals(tabJoueurs[i])) {
+		        return false;
+            }
+            i++;
+        }
+        return true;
 	}
 }

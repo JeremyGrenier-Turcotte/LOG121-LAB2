@@ -3,15 +3,41 @@ package bunco;
 import generic.De;
 import generic.IStrategie;
 import generic.Jeu;
+import generic.Joueur;
 
 import java.util.Iterator;
 
 public class BuncoPlusStrategie implements IStrategie {
 
 	@Override
-	public void calculerLeVainqueur(Jeu jeu) {
-		// TODO Auto-generated method stub
+	public Joueur[] calculerLeVainqueur(Jeu jeu) {
 
+	    int nbJoueurs = jeu.getCollJoueurs().getNbJoueurs();
+		Joueur[] array = new Joueur[nbJoueurs];
+		Iterator<Joueur> itrJ = jeu.getCollJoueurs().iterator();
+
+		// Premierement mettre les joueurs dans un tableau
+		int index = 0;
+		while (itrJ.hasNext()) {
+		    array[index++] = itrJ.next();
+        }
+
+        // Tri à bulles sur le tableau
+        boolean isSorted = false;
+		while (!isSorted) {
+		    isSorted = true;
+		    for (int i =0; i < nbJoueurs-1; i++) {
+		        if(array[i].compareTo(array[i+1]) == -1) {
+		            Joueur temp = array[i+1];
+		            array[i+1] = array[i];
+		            array[i] = temp;
+		            isSorted = false;
+                }
+            }
+            nbJoueurs--;
+        }
+
+        return array;
 	}
 
     /**
