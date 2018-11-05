@@ -27,11 +27,13 @@ public class BuncoPlus extends Jeu{
     @Override
     public void calculerScoreTour() {
 		int score = strat.calculerScoreTour(this);
-		if(score > 0 && score < 21) {
-		    joueurCourant.ajouterAuScore(score);
-		    calculerScoreTour();
-        } else if(score == 21) {
-		    joueurCourant.ajouterAuScore(score);
+        joueurCourant.ajouterAuScore(score);
+
+        // Si le joueur n'a pas fait de points ou qu'il a fait un bunco, on passe au joueur suivant.
+        if(score == 0 || score == 21) {
+            peutPasserAuSuivant = true;
+        } else {
+            peutPasserAuSuivant = false;
         }
     }
 }

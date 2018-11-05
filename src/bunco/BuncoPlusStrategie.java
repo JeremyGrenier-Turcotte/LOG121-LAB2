@@ -47,12 +47,11 @@ public class BuncoPlusStrategie implements IStrategie {
 	@Override
 	public int calculerScoreTour(Jeu jeu) {
 
-	    // Premierement on récupere le tour courant et on brasse les dés
+	    // Premierement on récupere le tour courant
 	    int tourCourant = ((BuncoPlus)jeu).getTourCourant();
-		jeu.getCollDes().brasserDes();
+		int nbDesEquivalantAuTour = 0;
 
 		// On itère dans la collection de dés pour savoir combien de dés correspondent au tour courant.
-        int nbDesEquivalantAuTour = 0;
         Iterator<De> itrDes = jeu.getCollDes().iterator();
         while (itrDes.hasNext()) {
             De de = itrDes.next();

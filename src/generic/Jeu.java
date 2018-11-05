@@ -9,6 +9,7 @@ import java.util.Iterator;
 public abstract class Jeu {
 	
 	protected int nbTours;
+	protected boolean peutPasserAuSuivant = true;
 	protected Joueur joueurCourant;
 	protected IStrategie strat;
     protected CollectionDes collDes;
@@ -58,24 +59,36 @@ public abstract class Jeu {
      * Fait joueur tous les joueurs pour un tour.
      */
 	public void effectuerTour(){
+	    collDes.brasserDes();
         Iterator<Joueur> itrJ = collJoueurs.iterator();
         while (itrJ.hasNext()) {
-            joueurCourant = itrJ.next();
+            if(peutPasserAuSuivant) {
+                joueurCourant = itrJ.next();
+            }
             calculerScoreTour();
         }
 	}
 
     /**
-     * Calcule le score du joueur courant pour le tour actuel. À définir dans les classes enfants.
+     * Calcule le score du joueur courant pour le tour actuel et passe au prochain joueur.
      */
 	public void calculerScoreTour() {
-
-	}
+        int score = strat.calculerScoreTour(this);
+        joueurCourant.ajouterAuScore(score);
+    }
 
     /**
-     * Trie les joueurs selon leur score en ordre décroissant et les affiche dans la console.
+     * Trie les joueurs du gagnant au perdant dépendement de leur score et les affiche dans la console.
      */
     public void calculerLeVainqueur() {
-
+        Joueur[] tab = strat.calculerLeVainqueur(this);
+        System.out.println("Partie terminée !");
+        System.out.println("<-- Tableau des scores -- >");
+        int index = 1;
+        for (Joueur j :
+                tab) {
+            System.out.println(index + ": " + j.toString());
+            index++;
+        }
     }
 }
