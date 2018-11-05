@@ -53,5 +53,10 @@ public class TestBuncoPlusStrategie {
         assertSame(joueur2,joueurs[1]);
         assertSame(joueur3,joueurs[2]);
     }
+    
+    @Test
+    public void testCalculerScoreTour() {
+    	
+    }
 
 }
