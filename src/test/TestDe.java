@@ -1,10 +1,11 @@
 package test;
 
-import static org.junit.Assert.*;
 import generic.De;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class TestDe extends TestBase{
 
@@ -44,4 +45,20 @@ public class TestDe extends TestBase{
 		assertEquals(0, de1.compareTo(de2));
 	}
 
+	@Test
+	public void brasserTest(){
+		de1 = new De(6);
+		for(int i= 0; i<100;i++){
+			de1.brasser();
+			if(de1.getValeur()>de1.getNbFaces()){
+				fail("Valeur superieur au nombre de faces");
+			}
+			if(de1.getValeur()<0){
+				fail("Valeur inferieur a zero");
+			}
+			if(de1.getValeur()==0){
+				fail("Valeur egale a zero");
+			}
+		}
+	}
 }

@@ -70,6 +70,6 @@ public class De implements Comparable<De> {
 	public void brasser(){
 	    // Il faut mettre + 1 car la limite supérieure de Random.nextInt() est exclusive.
         Random r = new Random();
-        valeur = r.nextInt(nbFaces + 1);
+        valeur = r.nextInt(nbFaces )+1;
 	}
 }
