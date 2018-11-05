@@ -17,6 +17,11 @@ public class TestDe extends TestBase{
 		de1 = new De(6);
 		de2 = new De(6);
 	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void creationDesTest(){
+		De d= new De(0);
+	}
 	
 	@Test
 	public void constructeurTest() {
@@ -47,7 +52,6 @@ public class TestDe extends TestBase{
 
 	@Test
 	public void brasserTest(){
-		de1 = new De(6);
 		for(int i= 0; i<100;i++){
 			de1.brasser();
 			if(de1.getValeur()>de1.getNbFaces()){

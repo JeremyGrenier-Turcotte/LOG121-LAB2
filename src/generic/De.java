@@ -15,7 +15,10 @@ public class De implements Comparable<De> {
      * Instancie un objet dé avec un nombre de faces défini.
      * @param nbFaces Nombre de faces que le dé possède
      */
-	public De(int nbFaces){
+	public De(int nbFaces) throws IllegalArgumentException{
+		if(nbFaces<=0){
+			throw new IllegalArgumentException("Le des doit avoir un nombre de faces positif superieur a zero");
+		}
 		this.nbFaces = nbFaces;
 	}
 
