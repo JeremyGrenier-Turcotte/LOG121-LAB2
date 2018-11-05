@@ -8,7 +8,7 @@ import java.util.Random;
 public class De implements Comparable<De> {
 
 	// Valeur arbitraire de départ, peu importe le nombre de faces qu'un dé possède il aura toujours une face qui vaut 1
-	int valeur = 1;
+	protected int valeur = 1;
     int nbFaces;
 
     /**
