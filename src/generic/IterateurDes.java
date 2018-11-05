@@ -24,6 +24,7 @@ public class IterateurDes implements Iterator<De> {
      */
 	@Override
 	public boolean hasNext() {
+
 		return index >= tabDes.length || tabDes[index] == null ? false : true;
 	}
 

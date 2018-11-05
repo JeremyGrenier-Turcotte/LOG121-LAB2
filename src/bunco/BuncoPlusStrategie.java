@@ -11,7 +11,6 @@ public class BuncoPlusStrategie implements IStrategie {
 
 	@Override
 	public Joueur[] calculerLeVainqueur(Jeu jeu) {
-
 	    int nbJoueurs = jeu.getCollJoueurs().getNbJoueurs();
 		Joueur[] array = new Joueur[nbJoueurs];
 		Iterator<Joueur> itrJ = jeu.getCollJoueurs().iterator();

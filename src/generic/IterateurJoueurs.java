@@ -24,6 +24,7 @@ public class IterateurJoueurs implements Iterator<Joueur> {
      */
 	@Override
 	public boolean hasNext() {
+
         return index >= tabJoueurs.length || tabJoueurs[index] == null ? false : true;
 	}
 

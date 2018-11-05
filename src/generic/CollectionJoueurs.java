@@ -27,7 +27,6 @@ public class CollectionJoueurs implements Iterable<Joueur>{
 	 */
 	@Override
 	public boolean equals(Object objet){
-
 		if(objet == null) return false;
 		if(!(objet instanceof CollectionJoueurs)) return false;
 

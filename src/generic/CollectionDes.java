@@ -52,7 +52,6 @@ public class CollectionDes implements Iterable<De>{
 	 */
 	@Override
 	public boolean equals(Object objet){
-
 		if(objet == null) return false;
 		if(!(objet instanceof CollectionDes)) return false;
 
