@@ -32,6 +32,7 @@ public class CollectionDes implements Iterable<De>{
 	public void brasserDes(){
         for (De de :
                 tabDes) {
+        	if(de != null)
             de.brasser();
         }
 	}
