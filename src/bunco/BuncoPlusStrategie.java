@@ -48,7 +48,7 @@ public class BuncoPlusStrategie implements IStrategie {
 	public int calculerScoreTour(Jeu jeu) {
 
 	    // Premierement on récupere le tour courant
-	    int tourCourant = ((BuncoPlus)jeu).getTourCourant();
+	    int tourCourant = jeu.getTourCourant();
 		int nbDesEquivalantAuTour = 0;
 
 		// On itère dans la collection de dés pour savoir combien de dés correspondent au tour courant.
@@ -62,7 +62,34 @@ public class BuncoPlusStrategie implements IStrategie {
         }
 
         // Si nous avons 3 dés qui correspondent au tour courant, nous avons un bunco!
-        return nbDesEquivalantAuTour == 3 ? 21 : nbDesEquivalantAuTour;
+        int score = nbDesEquivalantAuTour == 3 ? 21 : nbDesEquivalantAuTour;
+        
+        if(nbDesEquivalantAuTour == 0 && bunco5Pts(jeu))
+        	score = 5;
+        
+        if(score == 0 || score == 21) {
+            jeu.setPeutPasserAuSuivant(true);
+        } else {
+            jeu.setPeutPasserAuSuivant(false);
+        }
+        return score;
+	}
+
+	private boolean bunco5Pts(Jeu jeu) {
+		// On itère dans la collection de dés pour savoir combien de dés correspondent au tour courant.
+        Iterator<De> itrDes = jeu.getCollDes().iterator();
+        int valeur = 0;
+        if(itrDes.hasNext()) {
+        	valeur = itrDes.next().getValeur();
+        }
+        while (itrDes.hasNext()) {
+            De de = itrDes.next();
+            // Quand la valeur du dé brassé équivaut au tour courant, on incrémente
+            if(de.getValeur() != valeur) {
+            	return false;
+            }
+        }
+        return true;
 	}
 
 }
