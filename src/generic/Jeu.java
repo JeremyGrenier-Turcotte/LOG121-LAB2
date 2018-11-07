@@ -9,6 +9,7 @@ import java.util.Iterator;
 public abstract class Jeu {
 	
 	protected int nbTours;
+	private int tourCourant = 1;
 	protected boolean peutPasserAuSuivant = true;
 	protected Joueur joueurCourant;
 	protected IStrategie strat;
@@ -26,10 +27,6 @@ public abstract class Jeu {
 	    	this.collJoueurs = collJoueurs;
 	    	this.strat = strat;
 	}
-
-	public Joueur getJoueurCourant() {
-	    return joueurCourant;
-    }
 
     public int getNbTours() {
         return nbTours;
@@ -49,32 +46,27 @@ public abstract class Jeu {
 	public void jouer() {
 	    int tour = 0;
 	    while (tour < nbTours) {
-	        effectuerTour();
+	    	tourCourant = tour + 1;
+			calculerScoreTour();
 	        tour++;
         }
         calculerLeVainqueur();
     }
 
     /**
-     * Fait joueur tous les joueurs pour un tour.
+     * Calcule le score du joueur courant pour le tour actuel et passe au prochain joueur.
      */
-	public void effectuerTour(){
-	    collDes.brasserDes();
+	public void calculerScoreTour() {
         Iterator<Joueur> itrJ = collJoueurs.iterator();
         while (itrJ.hasNext()) {
             if(peutPasserAuSuivant) {
                 joueurCourant = itrJ.next();
+                peutPasserAuSuivant = false;
             }
-            calculerScoreTour();
+    	    collDes.brasserDes();
+            int score = strat.calculerScoreTour(this);
+            joueurCourant.ajouterAuScore(score);
         }
-	}
-
-    /**
-     * Calcule le score du joueur courant pour le tour actuel et passe au prochain joueur.
-     */
-	public void calculerScoreTour() {
-        int score = strat.calculerScoreTour(this);
-        joueurCourant.ajouterAuScore(score);
     }
 
     /**
@@ -91,4 +83,17 @@ public abstract class Jeu {
             index++;
         }
     }
+
+	public int getTourCourant() {
+	    return tourCourant;
+    }
+
+	public boolean peutPasserAuSuivant() {
+		return peutPasserAuSuivant;
+	}
+
+	public void setPeutPasserAuSuivant(boolean peutPasserAuSuivant) {
+		this.peutPasserAuSuivant = peutPasserAuSuivant;
+	}
+    
 }
