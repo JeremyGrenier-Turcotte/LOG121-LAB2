@@ -93,10 +93,10 @@ public class TestBuncoPlusStrategie {
 		 //tourCourant = 1 par défaut
 		 de1.fausseValeur = 1;
 		 de2.fausseValeur = 1;
-		 de2.fausseValeur = 1;
-		 Joueur joueurCourant = buncoPlus.getJoueurCourant();
+		 de3.fausseValeur = 1;
+		 des.brasserDes();
 		 assertEquals(21, buncoPlusStrategie.calculerScoreTour(buncoPlus));
-		 assertNotSame(joueurCourant, buncoPlus.getJoueurCourant());
+		 assertEquals(true, buncoPlus.peutPasserAuSuivant());
 	 }
 
 	 @Test
@@ -104,10 +104,10 @@ public class TestBuncoPlusStrategie {
 		 //tourCourant = 1 par défaut
 		 de1.fausseValeur = 2;
 		 de2.fausseValeur = 2;
-		 de2.fausseValeur = 2;
-		 Joueur joueurCourant = buncoPlus.getJoueurCourant();
+		 de3.fausseValeur = 2;
+		 des.brasserDes();
 		 assertEquals(5, buncoPlusStrategie.calculerScoreTour(buncoPlus));
-		 assertSame(joueurCourant, buncoPlus.getJoueurCourant());
+		 assertEquals(false, buncoPlus.peutPasserAuSuivant());
 	 }
 
 	 @Test
@@ -115,10 +115,10 @@ public class TestBuncoPlusStrategie {
 		 //tourCourant = 1 par défaut
 		 de1.fausseValeur = 1;
 		 de2.fausseValeur = 2;
-		 de2.fausseValeur = 4;
-		 Joueur joueurCourant = buncoPlus.getJoueurCourant();
+		 de3.fausseValeur = 4;
+		 des.brasserDes();
 		 assertEquals(1, buncoPlusStrategie.calculerScoreTour(buncoPlus));
-		 assertSame(joueurCourant, buncoPlus.getJoueurCourant());
+		 assertEquals(false, buncoPlus.peutPasserAuSuivant());
 	 }
 
 	 @Test
@@ -126,10 +126,10 @@ public class TestBuncoPlusStrategie {
 		 //tourCourant = 1 par défaut
 		 de1.fausseValeur = 2;
 		 de2.fausseValeur = 3;
-		 de2.fausseValeur = 4;
-		 Joueur joueurCourant = buncoPlus.getJoueurCourant();
+		 de3.fausseValeur = 4;
+		 des.brasserDes();
 		 assertEquals(0, buncoPlusStrategie.calculerScoreTour(buncoPlus));
-		 assertNotSame(joueurCourant, buncoPlus.getJoueurCourant());
+		 assertEquals(true, buncoPlus.peutPasserAuSuivant());
 	 }
 
 }
