@@ -11,9 +11,9 @@ public class BuncoPlusStrategie implements IStrategie {
 
 
     /**
-     *
-     * @param jeu
-     * @return
+     * Trie les joueurs participant à un jeu selon leur score en ordre décroissant
+     * @param jeu jeu
+     * @return tableau de joueurs triés selon leur pointage.
      */
 	@Override
 	public Joueur[] calculerLeVainqueur(Jeu jeu) {
@@ -68,31 +68,31 @@ public class BuncoPlusStrategie implements IStrategie {
         }
 
         // Si nous avons 3 dés qui correspondent au tour courant, nous avons un bunco!
-        int score = nbDesEquivalantAuTour == 3 ? 21 : nbDesEquivalantAuTour;
-        
-        if(nbDesEquivalantAuTour == 0 && bunco5Pts(jeu))
-        	score = 5;
-        
-        if(score == 0 || score == 21) {
-            jeu.setPeutPasserAuSuivant(true);
-        } else {
-            jeu.setPeutPasserAuSuivant(false);
+        if(nbDesEquivalantAuTour == 3) {
+            return 21;
+        } else if(nbDesEquivalantAuTour == 0) {
+            return estUnnbunco5Pts(jeu.getCollDes().iterator()) ? 5 : 0;
         }
-        return score;
+        return nbDesEquivalantAuTour;
 	}
 
-	private boolean bunco5Pts(Jeu jeu) {
-		// On itère dans la collection de dés pour savoir combien de dés correspondent au tour courant.
-        Iterator<De> itrDes = jeu.getCollDes().iterator();
-        int valeur = 0;
-        if(itrDes.hasNext()) {
-        	valeur = itrDes.next().getValeur();
-        }
-        while (itrDes.hasNext()) {
-            De de = itrDes.next();
-            // Quand la valeur du dé brassé équivaut au tour courant, on incrémente
-            if(de.getValeur() != valeur) {
-            	return false;
+    /**
+     * Détermine si un itérateur de dés contient 3 dés identiques susceptibles de créer un bunco 5 points.
+     * @param itrDes itérateur de dés
+     * @return vrai si on a 3 dés identiques, faux sinon.
+     */
+	private boolean estUnnbunco5Pts(Iterator<De> itrDes) {
+		// Itération dans la collection pour savoir si les dés ont tous la même valeur.
+        De dernierDe = null;
+        while(itrDes.hasNext()) {
+            if(dernierDe == null) {
+                dernierDe = itrDes.next();
+            } else {
+                De nouveauDe = itrDes.next();
+                if(dernierDe.compareTo(nouveauDe) != 0) {
+                    return false;
+                }
+                dernierDe = nouveauDe;
             }
         }
         return true;

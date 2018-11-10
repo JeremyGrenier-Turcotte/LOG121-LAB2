@@ -10,7 +10,7 @@ public abstract class Jeu {
 	
 	protected int nbTours;
 	private int tourCourant = 1;
-	protected boolean peutPasserAuSuivant = true;
+	protected boolean peutPasserAuSuivant = false;
 	protected Joueur joueurCourant;
 	protected IStrategie strat;
     protected CollectionDes collDes;
@@ -26,6 +26,7 @@ public abstract class Jeu {
 	    	this.collDes = collDes;
 	    	this.collJoueurs = collJoueurs;
 	    	this.strat = strat;
+	    	joueurCourant = collJoueurs.iterator().next();
 	}
 
     public int getNbTours() {
@@ -46,27 +47,35 @@ public abstract class Jeu {
 	public void jouer() {
 	    int tour = 0;
 	    while (tour < nbTours) {
-	    	tourCourant = tour + 1;
-			calculerScoreTour();
+			effectuerUnTour();
 	        tour++;
         }
         calculerLeVainqueur();
     }
 
-    /**
-     * Calcule le score du joueur courant pour le tour actuel et passe au prochain joueur.
-     */
-	public void calculerScoreTour() {
+    public void effectuerUnTour() {
         Iterator<Joueur> itrJ = collJoueurs.iterator();
         while (itrJ.hasNext()) {
             if(peutPasserAuSuivant) {
                 joueurCourant = itrJ.next();
-                peutPasserAuSuivant = false;
             }
-    	    collDes.brasserDes();
-            int score = strat.calculerScoreTour(this);
-            joueurCourant.ajouterAuScore(score);
+            calculerScoreTour();
         }
+
+        // Passe au tour suivant et on ré-initialise le joueur courant au premier joueur.
+        tourCourant++;
+        joueurCourant = collJoueurs.iterator().next();
+    }
+
+    /**
+     * Calcule le score du joueur courant pour le tour actuel et détermine si il faut passer au prochain joueur.
+     * À redéfinir pour des règles de jeu précises.
+     */
+	public void calculerScoreTour() {
+        collDes.brasserDes();
+        int score = strat.calculerScoreTour(this);
+        joueurCourant.ajouterAuScore(score);
+        peutPasserAuSuivant = true;
     }
 
     /**
@@ -90,10 +99,6 @@ public abstract class Jeu {
 
 	public boolean peutPasserAuSuivant() {
 		return peutPasserAuSuivant;
-	}
-
-	public void setPeutPasserAuSuivant(boolean peutPasserAuSuivant) {
-		this.peutPasserAuSuivant = peutPasserAuSuivant;
 	}
     
 }

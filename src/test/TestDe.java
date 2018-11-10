@@ -1,13 +1,15 @@
 package test;
 
 import generic.De;
+import generic.Joueur;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 
-public class TestDe extends TestBase{
+public class TestDe {
 
 	private De de1;
 	private De de2;
@@ -65,4 +67,34 @@ public class TestDe extends TestBase{
 			}
 		}
 	}
+
+	@Test
+    public void memeValeurEqualsTest() {
+	    setValeurDe(de1, 1);
+	    setValeurDe(de2, 1);
+	    assertEquals(de1, de2);
+    }
+
+    @Test
+    public void valeurDifferenteNotEqualsTest() {
+        setValeurDe(de1, 1);
+        setValeurDe(de2, 2);
+        assertNotEquals(de1, de2);
+    }
+
+    @Test
+    public void nullNotEqualsTest() {
+	    assertNotEquals(null, de1);
+    }
+
+    @Test
+    public void differentTypeNotEqualsTest() {
+	    assertNotEquals(de1, new Joueur(1));
+    }
+
+	private void setValeurDe(De de, int valeur) {
+	    while (de.getValeur() != valeur) {
+	        de.brasser();
+        }
+    }
 }

@@ -5,8 +5,8 @@ package generic;
  */
 public class Joueur implements Comparable<Joueur> {
 
-	int id;
-	int score = 0;
+	private int id;
+	private int score = 0;
 
     /**
      * Instancie un objet joueur avec un identifiant.
@@ -63,4 +63,12 @@ public class Joueur implements Comparable<Joueur> {
 			return false;
 		}
 	}
+
+    @Override
+    public String toString() {
+        return "Joueur{" +
+                "id=" + id +
+                ", score=" + score +
+                '}';
+    }
 }

@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestCollectionDes extends TestBase{
+public class TestCollectionDes extends TestBaseBunco {
 	
 	private CollectionDes collDes2;
 	private Iterator<De> itrDes1;
