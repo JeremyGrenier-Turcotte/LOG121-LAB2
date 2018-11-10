@@ -15,7 +15,7 @@ public class GenerateurBuncoPlus extends GenerateurJeuTemplate{
 	}
 
 
-	private static final int NB_JOUEURS = 5;
+
 	private static final int NB_DES = 3;
 	private static final int NB_FACES = 6;
 
@@ -31,7 +31,7 @@ public class GenerateurBuncoPlus extends GenerateurJeuTemplate{
 
 
 	@Override
-	public CollectionJoueurs creerJoueurs(int nbJoueurs) {
+	public CollectionJoueurs creerJoueurs() {
 	    CollectionJoueurs cj = new CollectionJoueurs();
 		for(int i =0; i < nbJoueurs; i++) {
 		    cj.ajouterJoueur(new Joueur(i+1));

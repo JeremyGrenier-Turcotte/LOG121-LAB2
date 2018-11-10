@@ -11,7 +11,7 @@ public abstract class GenerateurJeuTemplate {
 
 	public Jeu creerJeuTemplate() {
 		CollectionDes cd = creerDes();
-		CollectionJoueurs cj = creerJoueurs(nbJoueurs);
+		CollectionJoueurs cj = creerJoueurs();
 		IStrategie strategie = creerStrategie();
 		Jeu jeu = creerJeu(cd, cj, strategie);
 		return jeu;
@@ -19,7 +19,7 @@ public abstract class GenerateurJeuTemplate {
 	
 	public abstract CollectionDes creerDes();
 
-	public abstract CollectionJoueurs creerJoueurs(int nbJoueurs);
+	public abstract CollectionJoueurs creerJoueurs();
 	
 	public abstract IStrategie creerStrategie();
 	

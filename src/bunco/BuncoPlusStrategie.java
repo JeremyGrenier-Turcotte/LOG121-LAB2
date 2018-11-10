@@ -9,6 +9,12 @@ import java.util.Iterator;
 
 public class BuncoPlusStrategie implements IStrategie {
 
+
+    /**
+     *
+     * @param jeu
+     * @return
+     */
 	@Override
 	public Joueur[] calculerLeVainqueur(Jeu jeu) {
 	    int nbJoueurs = jeu.getCollJoueurs().getNbJoueurs();
