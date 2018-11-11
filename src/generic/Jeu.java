@@ -9,7 +9,7 @@ import java.util.Iterator;
 public abstract class Jeu {
 	
 	protected int nbTours;
-	private int tourCourant = 1;
+	private int tourCourant = 0;
 	protected boolean peutPasserAuSuivant = false;
 	protected Joueur joueurCourant;
 	protected IStrategie strat;
@@ -29,14 +29,26 @@ public abstract class Jeu {
 	    	joueurCourant = collJoueurs.iterator().next();
 	}
 
+    /**
+     * Obtient le nombre de tours du jeu
+     * @return nb de tours
+     */
     public int getNbTours() {
         return nbTours;
     }
 
+    /**
+     * Obtient la collection de dés
+     * @return Collection de dés
+     */
     public CollectionDes getCollDes() {
         return collDes;
     }
 
+    /**
+     * Obtient la collection de joueurs
+     * @return collection de joueurs
+     */
     public CollectionJoueurs getCollJoueurs() {
         return collJoueurs;
     }
@@ -45,14 +57,15 @@ public abstract class Jeu {
      * Simule une partie.
      */
 	public void jouer() {
-	    int tour = 0;
-	    while (tour < nbTours) {
+	    while (tourCourant <= nbTours-1) {
 			effectuerUnTour();
-	        tour++;
         }
         calculerLeVainqueur();
     }
 
+    /**
+     * Effectue un tour
+     */
     public void effectuerUnTour() {
         Iterator<Joueur> itrJ = collJoueurs.iterator();
         while (itrJ.hasNext()) {
@@ -93,10 +106,16 @@ public abstract class Jeu {
         }
     }
 
-	public int getTourCourant() {
-	    return tourCourant;
-    }
+    /**
+     * Obtient le tour courant
+     * @return tour courant
+     */
+	public int getTourCourant() { return tourCourant+1; }
 
+    /**
+     * Obtient si on peut passer au joueur suivant
+     * @return Vrai si on peut, faux sinon
+     */
 	public boolean peutPasserAuSuivant() {
 		return peutPasserAuSuivant;
 	}

@@ -92,5 +92,7 @@ public class TestBuncoPlus extends TestBaseBunco {
 
         System.out.println("Test d'une partie de bunco+");
         buncoPlus.jouer();
+        // À la fin d'une partie nous sommes rendus au 7e tour, qu'on ne jouera pas car une partie de bunco se finit a 6
+        assertEquals(7, buncoPlus.getTourCourant());
     }
 }
