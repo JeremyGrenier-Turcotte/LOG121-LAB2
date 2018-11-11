@@ -5,16 +5,16 @@ import generic.CollectionJoueurs;
 import generic.De;
 import generic.GenerateurJeuTemplate;
 import generic.IStrategie;
-import generic.Jeu;
 import generic.Joueur;
 
+/**
+ * Classe qui génère un jeu BuncoPlus.
+ */
 public class GenerateurBuncoPlus extends GenerateurJeuTemplate{
 
 	public GenerateurBuncoPlus(int nbJoueurs) {
 		super(nbJoueurs);
 	}
-
-
 
 	private static final int NB_DES = 3;
 	private static final int NB_FACES = 6;
@@ -47,7 +47,7 @@ public class GenerateurBuncoPlus extends GenerateurJeuTemplate{
 
 
 	@Override
-	public Jeu creerJeu(CollectionDes cd, CollectionJoueurs cj, IStrategie strategie) {
+	public BuncoPlus creerJeu(CollectionDes cd, CollectionJoueurs cj, IStrategie strategie) {
 		return new BuncoPlus(cd, cj, strategie);
 	}
 }

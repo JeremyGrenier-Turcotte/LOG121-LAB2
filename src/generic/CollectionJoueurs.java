@@ -7,10 +7,18 @@ public class CollectionJoueurs implements Iterable<Joueur>{
 	private Joueur[] tabJoueurs = new Joueur[10];
 	private int index = 0;
 
+	/**
+	 * Ajoute un joueur à la collection
+	 * @param joueur joueur
+	 */
 	public void ajouterJoueur(Joueur joueur){
 		tabJoueurs[index++] = joueur;
 	}
 
+    /**
+     * Obtient le nombre de joueurs contenus dans la collection
+     * @return nb de joueurs
+     */
 	public int getNbJoueurs() {
 	    return index;
     }

@@ -2,11 +2,9 @@ package test;
 
 import static org.junit.Assert.*;
 
+import bunco.BuncoPlus;
 import bunco.GenerateurBuncoPlus;
-import generic.CollectionDes;
-import generic.CollectionJoueurs;
-import generic.De;
-import generic.Joueur;
+import generic.*;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -48,5 +46,23 @@ public class TestGenerateurBuncoPlus {
 		}
 
 	}
+
+	@Test
+    public void testCreerJeuTemplate() {
+	    BuncoPlus buncoPlus = (BuncoPlus) gbp.creerJeuTemplate();
+        assertEquals(6, buncoPlus.getNbTours());
+
+	    assertEquals(4, buncoPlus.getCollJoueurs().getNbJoueurs());
+        Iterator<Joueur> itrJ = buncoPlus.getCollJoueurs().iterator();
+        while (itrJ.hasNext()) {
+            assertEquals(0, itrJ.next().getScore());
+        }
+
+	    assertEquals(3, buncoPlus.getCollDes().getNbDes());
+        Iterator<De> itrDes = buncoPlus.getCollDes().iterator();
+        while (itrDes.hasNext()) {
+            assertEquals(6, itrDes.next().getNbFaces());
+        }
+    }
 
 }

@@ -7,6 +7,9 @@ import generic.Joueur;
 
 import java.util.Iterator;
 
+/**
+ * Classe qui sert à compter le nombre de points d'un joueur pour une main et à calculer le vainqueur.
+ */
 public class BuncoPlusStrategie implements IStrategie {
 
 
