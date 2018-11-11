@@ -44,7 +44,7 @@ public class TestCollectionJoueurs extends TestBaseBunco {
 
 	}
 	@Test
-	public void getNbJoueur(){
+	public void testGetNbJoueurs(){
 
 		assertEquals(collJoueurs.getNbJoueurs(),3);
 

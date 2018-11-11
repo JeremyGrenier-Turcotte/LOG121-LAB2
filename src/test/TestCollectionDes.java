@@ -46,7 +46,7 @@ public class TestCollectionDes extends TestBaseBunco {
 
 	}
 	@Test
-	public void getNbDes(){
+	public void testGetNbDes(){
 
 		assertEquals(collectionDes.getNbDes(),3);
 
